@@ -13,13 +13,16 @@ public class CustomReceiver extends BroadcastReceiver {
         // an Intent broadcast.
 
 //        untuk mengetahui apakah event connected atau disconnected
-        String msg = " ";
+        String msg = " this is default message";
         switch (intent.getAction()){
             case Intent.ACTION_POWER_CONNECTED:
                 msg = "this phone is connected";
                 break;
             case Intent.ACTION_POWER_DISCONNECTED:
                 msg = "this phone is disconnected";
+                break;
+            case "ACTION_CUSTOM_BROADCAST" :
+                msg = " this is custom broadcast";
                 break;
             default:
                 break;

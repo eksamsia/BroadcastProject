@@ -1,6 +1,7 @@
 package apps.jobcourse.broadcastproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private CustomReceiver mCustomReceiver = new CustomReceiver();
 
 
+    private Button sendBtn ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,12 +28,24 @@ public class MainActivity extends AppCompatActivity {
 
         registerReceiver(mCustomReceiver, intentFilter);
 
+        sendBtn = findViewById(R.id.send_button);
+        sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent("ACTION_CUSTOM_BROADCAST");
+                LocalBroadcastManager.getInstance(view.getContext()).sendBroadcast(intent);
 
+            }
+        });
+
+        IntentFilter intentFilter1 = new IntentFilter("ACTION_CUSTOM_BROADCAST");
+        LocalBroadcastManager.getInstance(this).registerReceiver(mCustomReceiver, intentFilter1);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(mCustomReceiver);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mCustomReceiver);
     }
 }
