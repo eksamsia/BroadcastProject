@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent("ACTION_CUSTOM_BROADCAST");
+                intent.putExtra("Data","This is the data");
                 LocalBroadcastManager.getInstance(view.getContext()).sendBroadcast(intent);
 
             }

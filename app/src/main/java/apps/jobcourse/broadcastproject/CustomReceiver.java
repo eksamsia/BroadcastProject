@@ -22,7 +22,8 @@ public class CustomReceiver extends BroadcastReceiver {
                 msg = "this phone is disconnected";
                 break;
             case "ACTION_CUSTOM_BROADCAST" :
-                msg = " this is custom broadcast";
+//                msg = " this is custom broadcast";
+                msg = intent.getStringExtra("Data");
                 break;
             default:
                 break;
