@@ -1,0 +1,12 @@
+1. membaca sistem dari android nya (mendaftarkan 
+eventnya di main activity) 
+2. 
+
+- normal broadcast : banyak menerima receiverBroadcast,
+semua receiver mendapat event bersamaan. 
+pengirim memaakai sendBroadcast()
+- orderedBroadcast : sama seperti normal Broadcast, TAPI
+bisa memutuskan mana receiver yg Priority dan yg 
+membutuhkan.
+pengirim memakakai sendOrderedBroadcast()
+- local 
